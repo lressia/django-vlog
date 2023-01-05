@@ -1,0 +1,12 @@
+{% extends 'links.html' %}
+
+{% block content %}
+<p>{{error}}</p>
+<p>Are you sure delete this post?</p>
+{{post.title}}
+<form action="" method="POST">
+    {% csrf_token %}
+    <button name="delete">Delete</button>
+</form>
+<button name="back">Back</button>
+{% endblock %}

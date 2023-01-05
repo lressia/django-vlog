@@ -1,0 +1,16 @@
+{% extends 'links.html' %}
+
+{% block content %}
+<main class="container py-5">
+    <section class="card card-body">
+        <h1>{{post.title}}</h1>
+        <div>
+            <p>{{post.desc}}</p>
+        </div>
+        <div>
+            <p>Autor: {{post.user_id}}</p>
+        </div>
+    </section>
+    <a href="/" type="button" class="btn btn-secondary btn-md my-3">Back</a>
+</main>
+{% endblock %}

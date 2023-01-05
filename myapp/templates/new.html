@@ -1,0 +1,17 @@
+{% extends 'links.html' %}
+{% block content %}
+
+<h2 class="my-3">What do you want to post {{name}}?</h2>
+<main class="container py-5">
+    <section class="card card-body">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{error}}
+            {{form}}
+            <button class="btn btn-secondary">
+                Send
+            </button>
+        </form>
+    </section>
+</main>
+{% endblock %}

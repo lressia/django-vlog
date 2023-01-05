@@ -1,0 +1,19 @@
+{% extends 'links.html' %}
+
+{% block content %}
+<main class="container py-5">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form method="POST" class="card card-body text-center">
+                <h1>Log In</h1>
+                {{error}}
+                {% csrf_token %}
+                {{form}}
+                <button class="btn btn-secondary my-3">
+                    Log In!
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

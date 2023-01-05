@@ -1,0 +1,37 @@
+{% extends 'links.html '%}
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Welcome {{request.user}}</h1>
+{% else %}
+<h1>Welcome!</h1>
+{% endif %}
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <form action="/new" method="get">
+        <button class="btn btn-danger me-md-2">New Post!</button>
+    </form>
+  </div>
+{% for post in posts %}
+<main class="container py-5">
+    <section class="card card-body">
+        <p><strong>{{post.title}}</strong></p>
+        <p>{{post.date}}</p>
+        <p>{{post.desc}}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <form action="{% url 'post' post.id %}" method="get">
+                <button class="btn btn-outline-secondary">More...</button>
+            </form>
+            {% if request.user == post.user_id %}
+            <form action="{% url 'edit' post.id %}" method="get">
+                <button class="btn btn-outline-secondary">Edit</button>
+            </form>
+            <form action="{% url 'delete' post.id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger">Delete</button>
+            </form>
+            {% endif %}
+        </div>
+    </section>
+</main>
+
+{% endfor %}
+{% endblock %}
